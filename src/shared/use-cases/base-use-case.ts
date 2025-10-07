@@ -27,7 +27,22 @@ export abstract class BaseUseCase<InputType, OutputType, ErrorType extends Error
     if (this.schema) {
       const validation = this.schema.safeParse(input)
       if (!validation.success) {
-        const errorMessage = validation.error.issues.map((issue) => `${issue.message}`).join("; ")
+        const error = validation.error
+
+        const unrecognizedKeys = error.issues
+          .filter((issue) => issue.code === "unrecognized_keys")
+          .flatMap((issue: any) => issue.keys)
+
+        let errorMessage: string
+
+        if (unrecognizedKeys.length > 0) {
+          const allowedKeys = Object.keys((this.schema as any).shape ?? {})
+          errorMessage = `Os seguintes campos não são aceitos: ${unrecognizedKeys.join(
+            ", "
+          )}. São permitidos apenas: ${allowedKeys.join(", ")}.`
+        } else {
+          errorMessage = error.issues.map((issue) => issue.message).join("; ")
+        }
 
         return new InvalidInputError(errorMessage)
       }
