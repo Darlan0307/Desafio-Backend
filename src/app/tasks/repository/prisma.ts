@@ -107,12 +107,14 @@ export class PrismaTaskRepository implements TaskRepository {
   }
 
   private mapToResponse(task: PrismaTasks & { user: User }): Task {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { userId, ...rest } = task
     return {
-      ...task,
-      status: TaskStatus[task.status],
+      ...rest,
+      status: TaskStatus[rest.status],
       user: {
-        id: task.user.id,
-        name: task.user.name
+        id: rest.user.id,
+        name: rest.user.name
       }
     }
   }

@@ -17,5 +17,9 @@ export const TaskSchema = z
   .strict()
 
 export const TaskPatchSchema = TaskSchema.partial().extend({
-  status: z.enum(["pending", "completed"])
+  status: z
+    .enum(["pending", "completed"], {
+      error: "O campo status deve ser pending ou completed"
+    })
+    .optional()
 })
