@@ -1,12 +1,11 @@
-
-  import pino from "pino";
-import pretty from "pino-pretty";
+import pino from "pino"
+import pretty from "pino-pretty"
 
 const stream = pretty({
   colorize: true,
   translateTime: "SYS:yyyy-mm-dd HH:MM:ss.l o",
-  ignore: "pid,hostname",
-});
+  ignore: "pid,hostname"
+})
 
 export const logger = pino(
   {
@@ -16,16 +15,15 @@ export const logger = pino(
         {
           target: "pino-pretty",
           options: { colorize: true },
-          level: "debug",
+          level: "debug"
         },
         {
           target: "pino/file",
-          options: { destination: "./logs/app.log" },
-          level: "info",
-        },
-      ],
-    },
+          options: { destination: "./app.log" },
+          level: "info"
+        }
+      ]
+    }
   },
   stream
-);
-  
+)

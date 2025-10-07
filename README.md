@@ -101,11 +101,14 @@ Certifique-se de ter instalado:
 
    ```bash
    git clone https://github.com/Darlan0307/Desafio-Backend.git
+   ```
+
+   ```bash
    cd Desafio-Backend
    ```
 
 2. **Configure o arquivo `.env`**
-   Copie o arquivo `.env.example` na raiz do projeto.
+   Copie o arquivo `.env.example` na raiz do projeto. Não precisa alterar nada, apenas copie.
 
    ```bash
    cp .env.example .env
@@ -114,7 +117,7 @@ Certifique-se de ter instalado:
 3. **Suba os containers**
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
    Isso irá iniciar:
@@ -190,4 +193,4 @@ Erros de validação, erros de domínio e exceções do Prisma são padronizados
 
 ## ☁️ Deploy
 
-O deploy da aplicação foi realizado na plataforma **Render**, que hospedará a **API**. [Clique aqui](https://render.com/deploy?repo=https://github.com/Darlan0307/Desafio-Backend) para acessar o deploy.
+O deploy da aplicação foi realizado na plataforma **Render**, que hospedará a **API**. [Clique aqui](https://desafio-backend-0w1a.onrender.com/) para acessar o deploy.
