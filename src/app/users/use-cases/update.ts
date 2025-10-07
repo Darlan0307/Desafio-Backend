@@ -11,7 +11,7 @@ import { UserPatchSchema } from "../schema"
 
 type UseCaseErrors = InvalidInputError | ConflictEntityError | NotFoundError | UpdateEntityError
 
-export class UserPatchUseCase extends BaseUseCase<UpdateUserData, User, UpdateEntityError> {
+export class UserUpdateUseCase extends BaseUseCase<UpdateUserData, User, UpdateEntityError> {
   constructor(private repository: UserRepository) {
     super(UpdateEntityError, "Erro ao atualizar o usuário", UserPatchSchema)
   }

@@ -4,6 +4,7 @@ import helmet from "helmet"
 import compression from "compression"
 import { logger } from "@infra/logger"
 import { prismaDB } from "@shared/prisma"
+import { createUserRoutes } from "@app/users/http"
 
 export default class HttpServer {
   private app: Express
@@ -54,5 +55,6 @@ export default class HttpServer {
 
     const router = Router()
     this.app.use(router)
+    createUserRoutes(router)
   }
 }

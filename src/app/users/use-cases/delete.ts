@@ -10,7 +10,7 @@ export class UserDeleteUseCase extends BaseUseCase<string, void, DeleteEntityErr
   protected async action(userId: string): Promise<void | NotFoundError | DeleteEntityError> {
     const userExists = await this.repository.get(userId)
 
-    if (userExists) {
+    if (!userExists) {
       return new NotFoundError(`Usuário não encontrado.`)
     }
 
