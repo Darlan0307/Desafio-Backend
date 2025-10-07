@@ -54,6 +54,19 @@ export class PrismaUserRepository implements UserRepository {
     }
   }
 
+  async verifyEmailExists(email: string, ignoreThisId?: string): Promise<User | null> {
+    try {
+      return prismaDB.user.findUnique({
+        where: {
+          NOT: { id: ignoreThisId },
+          email
+        }
+      })
+    } catch (error) {
+      throw new GetEntityError("Erro ao buscar usuário pelo email: " + JSON.stringify(error))
+    }
+  }
+
   async list(pagination: PaginationRequest): Promise<DataListResponse<User>> {
     const { firstPosition, perPage, whereCondition } = BuildPagination(pagination)
     try {

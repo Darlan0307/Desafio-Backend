@@ -6,5 +6,6 @@ export interface UserRepository {
   update(id: string, user: UpdateUserData): Promise<User>
   delete(id: string): Promise<void>
   get(id: string): Promise<User | null>
+  verifyEmailExists(email: string, ignoreThisId?: string): Promise<User | null>
   list(pagination: PaginationRequest): Promise<DataListResponse<User>>
 }
