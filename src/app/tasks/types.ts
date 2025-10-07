@@ -1,6 +1,6 @@
 export enum TaskStatus {
   pending = "pending",
-  completed = "completed"
+  done = "done"
 }
 
 export type Task = {

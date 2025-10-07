@@ -21,7 +21,7 @@ model User {
 
 enum TaskStatus {
   pending
-  completed
+  done
 }
 
 model Tasks {
